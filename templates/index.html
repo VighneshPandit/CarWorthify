@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Price Prediction | AI-Powered Valuation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="bg-animation"></div>
+  <div class="grid-overlay"></div>
+  
+  <div class="container">
+    <!-- Left Side - Hero Section -->
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">AI-Powered Prediction</div>
+        <h1 class="hero-title">Discover Your Car's True Value</h1>
+        <p class="hero-subtitle">Get instant, accurate price predictions powered by advanced machine learning algorithms trained on thousands of vehicle sales.</p>
+        
+        <div class="hero-features">
+          <div class="feature-item">
+            <div class="feature-icon">🎯</div>
+            <span>Precision accuracy with ML models</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <span>Instant results in seconds</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🔒</div>
+            <span>100% secure and private</span>
+          </div>
+        </div>
+        
+        <div class="car-illustration">🚗</div>
+      </div>
+    </div>
+    
+    <!-- Right Side - Form Section -->
+    <div class="form-section">
+      <div class="form-wrapper">
+        <div class="form-header">
+          <h2 class="form-title">Get Your Prediction</h2>
+          <p class="form-description">Fill in your vehicle details to receive an instant price estimate</p>
+        </div>
+        
+        <form action="/predict" method="POST">
+          <div class="form-group">
+            <label>Manufacturer</label>
+            <select name="manufacturer" required>
+              <option value="">Select manufacturer</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Ford">Ford</option>
+              <option value="BMW">BMW</option>
+              <option value="Porsche">Porsche</option>
+              <option value="VW">VW</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Model</label>
+            <select name="model" required>
+              <option value="">Select model</option>
+              <option value="Mandeo">Mandeo</option>
+              <option value="Yaris">Yaris</option>
+              <option value="Golf">Golf</option>
+              <option value="Fiesta">Fiesta</option>
+              <option value="Passat">Passat</option>
+              <option value="Polo">Polo</option>
+              <option value="RAV4">RAV4</option>
+              <option value="911">911</option>
+              <option value="Cayenne">Cayenne</option>
+              <option value="Prius">Prius</option>
+              <option value="Focus">Focus</option>
+              <option value="Z4">Z4</option>
+              <option value="M5">M5</option>
+              <option value="X3">X3</option>
+              <option value="718 Cayman">Cayman</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Fuel Type</label>
+            <select name="fuel_type" required>
+              <option value="">Select fuel type</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div class="range-group">
+            <div class="range-header">
+              <label>Engine Size</label>
+              <span class="range-value"><output id="engineOutput">1.5</output> L</span>
+            </div>
+            <input type="range" name="engine_size" min="0.8" max="5.0" step="0.1" value="1.5" oninput="document.getElementById('engineOutput').value = this.value">
+          </div>
+
+          <div class="range-group">
+            <div class="range-header">
+              <label>Year of Manufacture</label>
+              <span class="range-value"><output id="yearOutput">2018</output></span>
+            </div>
+            <input type="range" name="year" min="1984" max="2024" value="2018" oninput="document.getElementById('yearOutput').value = this.value">
+          </div>
+
+          <div class="form-group">
+            <label>Mileage (km)</label>
+            <input type="number" name="mileage" placeholder="e.g., 45000" required min="0">
+          </div>
+
+          <button type="submit" class="btn">Predict Price</button>
+        </form>
+               
+        <div class="result">
+          {{ prediction_text }}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
