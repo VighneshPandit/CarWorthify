@@ -116,9 +116,20 @@ body {
 .hero-title {
   font-size: 56px;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.1; 
   margin-bottom: 24px;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #000000, #e94343, #f87400);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+  filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.3));
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hero-subtitle {
